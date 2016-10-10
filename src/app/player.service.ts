@@ -5,30 +5,35 @@ import { Player } from './player';
 
 @Injectable()
 export class PlayerService {
+	players: FirebaseListObservable<Player[]>;
 	constructor(
 		private af: AngularFire ) {
+			this.players = this.af.database.list('/players');
 	}
 
 	getPlayers(): FirebaseListObservable<Player[]> {
-		return this.af.database.list('/players');
+		return this.players;
 	}
 
-	getPlayer(playerKey: string): FirebaseObjectObservable<Player> {
-		return this.af.database.object(`/players/${playerKey}`);
+	getPlayer(playerUid: string): FirebaseListObservable<Player[]> {
+		return this.af.database.list(`/players`, {
+			query: {
+				orderByChild: 'uid',
+				equalTo: playerUid
+			}
+		});
 	}
 
-	update(player: FirebaseObjectObservable<Player>, newName: string): firebase.Promise<void> {
-		const promise = player.update({ name: newName });
+	update(playerKey: string, newPlayer: Player): firebase.Promise<void> {
+		const promise = this.players.update(playerKey, newPlayer);
 		return promise;
 	}
 
 	create(player: Player) {
-		const players = this.af.database.list('/players');
-		players.push({ "name": name });
+		this.players.push(player);
 	}
 
 	delete(playerKey: string) {
-		const playeres = this.af.database.list('/players');
-		playeres.remove(playerKey);
+		this.players.remove(playerKey);
 	}
 }
