@@ -42,8 +42,8 @@ export class SubmitMatchComponent implements OnInit {
 
     console.log('here');
 
-  	this.playerService.update(this.winner.$key, this.winner);
-  	this.playerService.update(this.loser.$key, this.loser);
+  	this.playerService.updateWins(this.winner.$key, this.winner.wins);
+  	this.playerService.updateLosses(this.loser.$key, this.loser.losses);
 
   	this.matchService.create(this.match);
   }

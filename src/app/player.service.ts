@@ -24,10 +24,13 @@ export class PlayerService {
 		});
 	}
 
-	updateWinsLosses(playerKey: string, newPlayer: Player): void {
-		this.players.update(playerKey, {wins: newPlayer.wins});
-		this.players.update(playerKey, {losses: newPlayer.losses});
+	updateWins(playerKey: string, wins: number): void {
+		this.players.update(playerKey, {wins: wins});
 	}
+
+    updateLosses(playerKey: string, losses: number): void {
+        this.players.update(playerKey, {losses: losses});
+    }
 
 	create(player: Player) {
 		this.players.push(player);
