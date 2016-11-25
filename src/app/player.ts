@@ -6,4 +6,5 @@ export class Player {
 	losses: number;
 	wins: number;
 	leagueIds: string[];
+	$key: string;
 }

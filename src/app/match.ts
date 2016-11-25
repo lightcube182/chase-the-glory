@@ -1,3 +1,5 @@
+import { Player } from './player';
+
 export class Match {
 	date: string;
 	leagueId: string;
@@ -5,5 +7,5 @@ export class Match {
 	loserUid: string;
 	status: string;
 	winnerName: string;
-	winnderUid: string;
+	winnerUid: string;
 }
