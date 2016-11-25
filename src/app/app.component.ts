@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		this.af.auth.subscribe(auth => {
 			this.auth = auth;
-			console.log(this.auth);
 			let players: FirebaseListObservable<Player[]> = this.playerService.getPlayer(this.auth.uid);
 			players.subscribe(player => {
 				if (!player.length) {
