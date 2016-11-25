@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -8,10 +9,14 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { routing } from './app.routing';
 
 import { PlayerService } from './player.service';
+import { MatchService } from './match.service';
 
 import { AppComponent } from './app.component';
 import { PlayersComponent } from './players.component';
 import { PlayerSignUpComponent } from './player-sign-up/player-sign-up.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { SubmitMatchComponent } from './submit-match/submit-match.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB-shn6r6-LgmCy6v8maYr_Oynjb8eQlEs",
@@ -30,7 +35,10 @@ const myFirebaseAuthConfig = {
   declarations: [
     AppComponent,
     PlayersComponent,
-    PlayerSignUpComponent
+    PlayerSignUpComponent,
+    PlayerDetailsComponent,
+    NavigationComponent,
+    SubmitMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +47,7 @@ const myFirebaseAuthConfig = {
     routing,
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, MatchService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
