@@ -1,5 +1,9 @@
 <ul class="player-list">
 	<li *ngFor="let player of players | async; let i = index;" class="player-list__player">
-		{{ player.name }}
+		<div class="player-details">
+			<span class="player-details__name">{{ player.name }}</span>
+			<span class="player-details__wins">{{ player.wins }}</span>
+			<span class="player-details__losses">{{ player.losses }}</span>
+		</div>
 	</li>
 </ul>
