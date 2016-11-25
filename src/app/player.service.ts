@@ -24,9 +24,9 @@ export class PlayerService {
 		});
 	}
 
-	update(playerKey: string, newPlayer: Player): firebase.Promise<void> {
-		const promise = this.players.update(playerKey, newPlayer);
-		return promise;
+	updateWinsLosses(playerKey: string, newPlayer: Player): void {
+		this.players.update(playerKey, {wins: newPlayer.wins});
+		this.players.update(playerKey, {losses: newPlayer.losses});
 	}
 
 	create(player: Player) {
