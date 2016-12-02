@@ -1,0 +1,34 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    "players": {
+      "$player": {
+        ".write": "!data.exists() && newData.child('uid').val() === auth.uid",
+        "wins": {
+          ".write": "newData.val() === data.val() + 1"
+        },
+        "losses": {
+          ".write": "newData.val() === data.val() + 1"
+        }
+      }
+    },
+    "leagues": {
+      "$league": {
+        ".write": "!data.exists() || data.child('adminUid').val() === auth.uid"
+      }
+    },
+    "matches": {
+      ".indexOn": "statusConfirmationUid",
+      "$match": {
+        ".write": "!data.exists() && (newData.child('winnerUid').val() === auth.uid || newData.child('loserUid').val() === auth.uid)",
+        "status": {
+          ".validate": "newData.val() === 'pending' || newData.val() === 'denied' || newData.val() === 'confirmed'",
+          ".write": "data.child('confirmationUid').val() === auth.uid"
+        },
+        "statusConfirmationUid": {
+          ".write": "data.child('confirmationUid').val() === auth.uid"
+        }
+      }
+    }
+  }
+}
