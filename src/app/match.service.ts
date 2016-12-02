@@ -30,7 +30,6 @@ export class MatchService {
     }
 
     updateMatchStatus(matchId: string, confirmationUid: string, newStatus: string): void {
-        console.log('here');
         this.matches.update(matchId, {status: newStatus});
         this.matches.update(matchId, {statusConfirmationUid: `${newStatus}_${confirmationUid}`});
     }
