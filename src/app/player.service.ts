@@ -22,16 +22,18 @@ export class PlayerService {
     }
 
     updateWins(playerKey: string): void {
-        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+        let winner: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
             currentWins: number = 0;
-        loser.subscribe(snapshot => currentWins = snapshot.wins);
-        loser.update({wins: currentWins + 1})
+        let winnerSubscription = winner.subscribe(snapshot => currentWins = snapshot.wins);
+        winnerSubscription.unsubscribe();
+        winner.update({wins: currentWins + 1})
     }
 
     updateLosses(playerKey: string): void {
         let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
             currentLosses: number = 0;
-        loser.subscribe(snapshot => currentLosses = snapshot.losses);
+        let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
+        loserSubscription.unsubscribe();
         loser.update({losses: currentLosses + 1})
     }
 
