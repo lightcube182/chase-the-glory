@@ -1,5 +1,3 @@
-import {Player} from './player';
-
 export class Match {
     date: string;
     leagueId: string;
@@ -8,4 +6,8 @@ export class Match {
     status: string;
     winnerName: string;
     winnerUid: string;
+    submissionUid: string;
+    confirmationUid: string;
+    statusConfirmationUid: string;
+    $key: string;
 }
