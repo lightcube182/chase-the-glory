@@ -1,34 +1,47 @@
-import { Injectable }    from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import {Injectable}    from '@angular/core';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
-import { Player } from './player';
+import {Player} from './player';
 
 @Injectable()
 export class PlayerService {
-	constructor(
-		private af: AngularFire ) {
-	}
+    players: FirebaseListObservable<Player[]>;
+    playerObject: FirebaseObjectObservable<Player>;
 
-	getPlayers(): FirebaseListObservable<Player[]> {
-		return this.af.database.list('/players');
-	}
+    constructor(private af: AngularFire) {
+        this.players = this.af.database.list('/players');
+        this.playerObject = this.af.database.object('/players');
+    }
 
-	getPlayer(playerKey: string): FirebaseObjectObservable<Player> {
-		return this.af.database.object(`/players/${playerKey}`);
-	}
+    getPlayers(): FirebaseListObservable<Player[]> {
+        return this.players;
+    }
 
-	update(player: FirebaseObjectObservable<Player>, newName: string): firebase.Promise<void> {
-		const promise = player.update({ name: newName });
-		return promise;
-	}
+    getPlayer(playerUid: string): FirebaseObjectObservable<Player> {
+        return this.af.database.object(`/players/${playerUid}`);
+    }
 
-	create(player: Player) {
-		const players = this.af.database.list('/players');
-		players.push({ "name": name });
-	}
+    updateWins(playerKey: string): void {
+        let winner: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+            currentWins: number = 0;
+        let winnerSubscription = winner.subscribe(snapshot => currentWins = snapshot.wins);
+        winnerSubscription.unsubscribe();
+        winner.update({wins: currentWins + 1})
+    }
 
-	delete(playerKey: string) {
-		const playeres = this.af.database.list('/players');
-		playeres.remove(playerKey);
-	}
+    updateLosses(playerKey: string): void {
+        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+            currentLosses: number = 0;
+        let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
+        loserSubscription.unsubscribe();
+        loser.update({losses: currentLosses + 1})
+    }
+
+    create(player: Player) {
+        this.af.database.object(`/players/${player.uid}`).set(player);
+    }
+
+    delete(playerKey: string) {
+        this.players.remove(playerKey);
+    }
 }

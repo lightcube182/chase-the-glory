@@ -1,0 +1,19 @@
+<form class="submit-match-form" name="submit-match" (ngSubmit)="onSubmit()" #matchForm="ngForm">
+    <div class="submit-match-form__form-group">
+        <label for="winner">
+            Name of Winner:
+        </label>
+        <select id="winner" required [(ngModel)]="winner" name="winner">
+            <option *ngFor="let p of players | async" [ngValue]="p">{{p.name}}</option>
+        </select>
+    </div>
+    <div class="submit-match-form__form-group">
+        <label for="loser">
+            Name of Loser:
+        </label>
+        <select id="loser" required [(ngModel)]="loser" name="loser">
+            <option *ngFor="let p of players | async" [ngValue]="p">{{p.name}}</option>
+        </select>
+    </div>
+    <button type="submit" [disabled]="!matchForm.form.valid">Submit</button>
+</form>

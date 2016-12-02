@@ -1,0 +1,15 @@
+<form class="create-league-form" name="create-league" (ngSubmit)="onSubmit()" #createLeagueForm="ngForm">
+    <div class="create-league-form__form-group">
+        <label for="league-name">
+            Name of League:
+        </label>
+        <input id="league-name" required type="text" [(ngModel)]="newLeague.leagueName" name="league-name">
+    </div>
+    <div class="create-league-form__form-group">
+        <label for="sport">
+            Name of Sport:
+        </label>
+        <input id="sport" required type="text" [(ngModel)]="newLeague.sport" name="sport">
+    </div>
+    <button type="submit" [disabled]="!createLeagueForm.form.valid">Submit</button>
+</form>

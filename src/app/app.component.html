@@ -1,5 +1,8 @@
 <h1>
-  {{title}}
+    {{title}}
 </h1>
-<button (click)="login()">Login with Google</button>
+<app-navigation></app-navigation>
+<button *ngIf="!auth" (click)="login()">Login with Google</button>
+<button *ngIf="auth" (click)="logout()">Logout</button>
+<app-match-confirmation></app-match-confirmation>
 <router-outlet></router-outlet>

@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import {TestBed, async} from '@angular/core/testing';
-import {PlayerSignUpComponent} from './player-sign-up.component';
+import {NavigationComponent} from './navigation.component';
 
-describe('Component: PlayerSignUp', () => {
+describe('Component: Navigation', () => {
     it('should create an instance', () => {
-        let component = new PlayerSignUpComponent();
+        let component = new NavigationComponent();
         expect(component).toBeTruthy();
     });
 });

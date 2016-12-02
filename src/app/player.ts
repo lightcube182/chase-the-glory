@@ -1,9 +1,11 @@
 export class Player {
-	name: string;
-	uid: string;
-	email: string;
-	image: string;
-	losses: number;
-	wins: number;
-	leagueIds: string[];
+    name: string;
+    uid: string;
+    email: string;
+    image: string;
+    losses: number;
+    wins: number;
+    leagueIds: string[];
+    $key: string;
+    $exists: () => boolean;
 }
