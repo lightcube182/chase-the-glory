@@ -17,21 +17,22 @@ export class PlayerService {
         return this.players;
     }
 
-    getPlayer(playerUid: string): FirebaseListObservable<Player[]> {
-        return this.af.database.list(`/players`, {
-            query: {
-                orderByChild: 'uid',
-                equalTo: playerUid
-            }
-        });
+    getPlayer(playerUid: string): FirebaseObjectObservable<Player> {
+        return this.af.database.object(`/players/${playerUid}`);
     }
 
-    updateWins(playerKey: string, wins: number): void {
-        this.players.update(playerKey, {wins: wins});
+    updateWins(playerKey: string): void {
+        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+            currentWins: number = 0;
+        loser.subscribe(snapshot => currentWins = snapshot.wins);
+        loser.update({wins: currentWins + 1})
     }
 
-    updateLosses(playerKey: string, losses: number): void {
-        this.players.update(playerKey, {losses: losses});
+    updateLosses(playerKey: string): void {
+        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+            currentLosses: number = 0;
+        loser.subscribe(snapshot => currentLosses = snapshot.losses);
+        loser.update({losses: currentLosses + 1})
     }
 
     create(player: Player) {

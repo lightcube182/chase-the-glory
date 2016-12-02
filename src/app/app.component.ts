@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {AngularFire, FirebaseAuthState, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseAuthState, FirebaseObjectObservable} from 'angularfire2';
 
 import {PlayerService} from './player.service';
 
@@ -20,12 +20,13 @@ export class AppComponent implements OnInit {
     constructor(private router: Router,
                 private af: AngularFire,
                 private playerService: PlayerService) {
+
         this.af.auth.subscribe(auth => {
             this.auth = auth;
-            let players: FirebaseListObservable<Player[]> = this.playerService.getPlayer(this.auth.uid);
-            players.subscribe(player => {
+            let player: FirebaseObjectObservable<Player> = this.playerService.getPlayer(this.auth.uid);
+            player.subscribe(player => {
                 AppComponent.currentUserId = this.auth.uid;
-                if (!player.length) {
+                if (!player.$exists()) {
                     let newPlayer: Player = new Player();
                     newPlayer.name = this.auth.auth.displayName;
                     newPlayer.email = this.auth.auth.email;
