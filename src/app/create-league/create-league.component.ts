@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {LeagueService} from '../league.service';
+import {PlayerService} from '../player.service';
 
 import {AppComponent} from '../app.component';
 
@@ -14,16 +16,22 @@ import {League} from '../league';
 export class CreateLeagueComponent implements OnInit {
     newLeague = new League();
 
-    constructor(private leagueService: LeagueService) {
+    constructor(private leagueService: LeagueService, private playerService: PlayerService, private router: Router) {
     }
 
     ngOnInit() {
     }
 
     onSubmit() {
+        let playerList: string[] = [AppComponent.currentUserId];
         this.newLeague.adminUid = AppComponent.currentUserId;
-        console.log(this.newLeague.adminUid);
-        this.leagueService.create(this.newLeague);
+        this.newLeague.players = playerList;
+        this.newLeague.type = "1v1";
+        let newLeagueRef = this.leagueService.create(this.newLeague);
+        this.newLeague.leagueId = newLeagueRef.key;
+        this.playerService.updateLeagues(AppComponent.currentUserId, this.newLeague);
+
+        this.router.navigate(['/']);
     }
 
 }
