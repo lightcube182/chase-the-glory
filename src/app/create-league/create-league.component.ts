@@ -31,6 +31,7 @@ export class CreateLeagueComponent implements OnInit {
             adminPlayer.email = snapshot.email;
             adminPlayer.name = snapshot.name;
             adminPlayer.image = snapshot.image;
+            adminPlayer.uid = snapshot.uid;
         });
         playerSubscription.unsubscribe();
         adminPlayer.wins = 0;
