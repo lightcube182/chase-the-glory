@@ -7,6 +7,8 @@ import {PlayerService} from '../player.service';
 import {AppComponent} from '../app.component';
 
 import {League} from '../league';
+import {Player} from "../player";
+import {FirebaseObjectObservable} from "angularfire2";
 
 @Component({
     selector: 'app-create-league',
@@ -23,9 +25,21 @@ export class CreateLeagueComponent implements OnInit {
     }
 
     onSubmit() {
-        let playerList: string[] = [AppComponent.currentUserId];
+        let adminPlayerObservable: FirebaseObjectObservable<Player> = this.playerService.getPlayer(AppComponent.currentUserId);
+        let adminPlayer: Player = new Player;
+        let playerSubscription = adminPlayerObservable.subscribe(snapshot => {
+            adminPlayer.email = snapshot.email;
+            adminPlayer.name = snapshot.name;
+            adminPlayer.image = snapshot.image;
+        });
+        playerSubscription.unsubscribe();
+        adminPlayer.wins = 0;
+        adminPlayer.losses = 0;
         this.newLeague.adminUid = AppComponent.currentUserId;
-        this.newLeague.players = playerList;
+        if (!this.newLeague.players) {
+            this.newLeague.players = new Array<Player>();
+        }
+        this.newLeague.players[adminPlayer.uid] = adminPlayer;
         this.newLeague.type = "1v1";
         let newLeagueRef = this.leagueService.create(this.newLeague);
         this.newLeague.leagueId = newLeagueRef.key;
