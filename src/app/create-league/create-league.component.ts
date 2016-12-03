@@ -48,5 +48,4 @@ export class CreateLeagueComponent implements OnInit {
 
         this.router.navigate(['/']);
     }
-
 }
