@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -18,7 +18,12 @@ import {Match} from '../match';
     styleUrls: ['./submit-match.component.css']
 })
 export class SubmitMatchComponent implements OnInit {
-    players: FirebaseListObservable<Player[]>;
+    @Input()
+        players: FirebaseListObservable<Player[]>;
+
+    @Input()
+        leagueId: string;
+
     winner: Player;
     loser: Player;
     match = new Match();
@@ -27,14 +32,13 @@ export class SubmitMatchComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getPlayers();
     }
 
     onSubmit() {
         let todaysDate = new Date();
 
         this.match.date = this.datePipe.transform(todaysDate, 'MM-dd-yyyy');
-        this.match.leagueId = "Recreational";
+        this.match.leagueId = this.leagueId;
         this.match.loserUid = this.loser.uid;
         this.match.loserName = this.loser.name;
         this.match.status = "pending";
@@ -48,9 +52,4 @@ export class SubmitMatchComponent implements OnInit {
 
         this.router.navigate(['/']);
     }
-
-    getPlayers(): void {
-        this.players = this.playerService.getPlayers();
-    }
-
 }
