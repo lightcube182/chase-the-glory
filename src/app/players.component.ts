@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 import {FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
@@ -12,10 +12,13 @@ import {Player} from './player';
 })
 
 export class PlayersComponent implements OnInit {
+    @Input()
     players: FirebaseListObservable<Player[]>;
 
     ngOnInit(): void {
-        this.getPlayers();
+        if (!this.players) {
+            this.getPlayers();
+        }
     }
 
     constructor(private playerService: PlayerService) {
