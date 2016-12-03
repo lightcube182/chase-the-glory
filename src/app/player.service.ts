@@ -22,16 +22,16 @@ export class PlayerService {
         return this.af.database.object(`/players/${playerUid}`);
     }
 
-    updateWins(playerKey: string): void {
-        let winner: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+    updateWins(playerKey: string, leagueId: string): void {
+        let winner: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentWins: number = 0;
         let winnerSubscription = winner.subscribe(snapshot => currentWins = snapshot.wins);
         winnerSubscription.unsubscribe();
         winner.update({wins: currentWins + 1})
     }
 
-    updateLosses(playerKey: string): void {
-        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+    updateLosses(playerKey: string, leagueId: string): void {
+        let loser: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentLosses: number = 0;
         let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
         loserSubscription.unsubscribe();
