@@ -1,3 +1,5 @@
+import { League } from './league';
+
 export class Player {
     name: string;
     uid: string;
@@ -5,7 +7,7 @@ export class Player {
     image: string;
     losses: number;
     wins: number;
-    leagueIds: string[];
+    leagues: League[];
     $key: string;
     $exists: () => boolean;
 }
