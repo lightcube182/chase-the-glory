@@ -5,4 +5,5 @@ export class League {
     players: string[];
     sport: string;
     type: string;
+    leagueId: string;
 }
