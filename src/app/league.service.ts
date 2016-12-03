@@ -25,7 +25,8 @@ export class LeagueService {
     }
 
     create(league: League) {
-        this.leagues.push(league);
+        let newPostRef = this.leagues.push(league);
+        return newPostRef;
     }
 
     delete(leagueKey: string) {
