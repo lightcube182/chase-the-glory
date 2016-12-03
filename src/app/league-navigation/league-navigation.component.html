@@ -1,0 +1,7 @@
+<section class="league-navigation">
+  <ul>
+    <li *ngFor="let league of leagues | async">
+      <a [routerLink]="['/league-landing/', league.leagueId]">{{ league.leagueName }}</a>
+    </li>
+  </ul>
+</section>
