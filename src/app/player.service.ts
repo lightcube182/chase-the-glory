@@ -2,6 +2,7 @@ import {Injectable}    from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import {Player} from './player';
+import {League} from './league';
 
 @Injectable()
 export class PlayerService {
@@ -35,6 +36,15 @@ export class PlayerService {
         let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
         loserSubscription.unsubscribe();
         loser.update({losses: currentLosses + 1})
+    }
+
+    updateLeagues(playerKey: string, league: League): void {
+        let leagues: FirebaseObjectObservable<League[]> = this.af.database.object(`/players/${playerKey}/leagues/${league.leagueId}`);
+        leagues.set({leagueName: league.leagueName, leagueId: league.leagueId});
+    }
+
+    getPlayerLeagues(playerKey: string): FirebaseListObservable<League[]> {
+        return this.af.database.list(`/players/${playerKey}/leagues`);
     }
 
     create(player: Player) {
