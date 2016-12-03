@@ -1,0 +1,5 @@
+<section>
+  <h2>{{ league.leagueName }}</h2>
+  <app-submit-match [players]="leaguePlayers" [leagueId]="league.$key"></app-submit-match>
+  <players [players]="leaguePlayers"></players>
+</section>

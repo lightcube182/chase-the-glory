@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import {League} from './league';
+import {Player} from './player';
 
 @Injectable()
 export class LeagueService {
@@ -15,17 +16,17 @@ export class LeagueService {
         return this.leagues;
     }
 
-    getLeague(playerUid: string): FirebaseListObservable<League[]> {
-        return this.af.database.list(`/players`, {
-            query: {
-                orderByChild: 'uid',
-                equalTo: playerUid
-            }
-        });
+    getLeague(leagueUid: string): FirebaseObjectObservable<League> {
+        return this.af.database.object(`/leagues/${leagueUid}`);
+    }
+
+    getLeaguePlayers(leagueUid: string): FirebaseListObservable<Player[]> {
+        return this.af.database.list(`/leagues/${leagueUid}/players`);
     }
 
     create(league: League) {
-        this.leagues.push(league);
+        let newPostRef = this.leagues.push(league);
+        return newPostRef;
     }
 
     delete(leagueKey: string) {

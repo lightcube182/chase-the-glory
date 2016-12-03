@@ -5,6 +5,7 @@ import {PlayersComponent}      from './players.component';
 import {PlayerSignUpComponent}    from './player-sign-up/player-sign-up.component';
 import {SubmitMatchComponent}    from './submit-match/submit-match.component';
 import {CreateLeagueComponent}    from './create-league/create-league.component';
+import {LeagueLandingComponent} from "./league-landing/league-landing.component";
 
 const appRoutes: Routes = [
     {
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
     {
         path: 'create-league',
         component: CreateLeagueComponent
+    },
+    {
+        path: 'league-landing/:leagueId',
+        component: LeagueLandingComponent
     }
 ];
 

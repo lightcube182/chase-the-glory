@@ -2,6 +2,7 @@ import {Injectable}    from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import {Player} from './player';
+import {League} from './league';
 
 @Injectable()
 export class PlayerService {
@@ -21,20 +22,29 @@ export class PlayerService {
         return this.af.database.object(`/players/${playerUid}`);
     }
 
-    updateWins(playerKey: string): void {
-        let winner: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+    updateWins(playerKey: string, leagueId: string): void {
+        let winner: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentWins: number = 0;
         let winnerSubscription = winner.subscribe(snapshot => currentWins = snapshot.wins);
         winnerSubscription.unsubscribe();
         winner.update({wins: currentWins + 1})
     }
 
-    updateLosses(playerKey: string): void {
-        let loser: FirebaseObjectObservable<Player> = this.getPlayer(playerKey),
+    updateLosses(playerKey: string, leagueId: string): void {
+        let loser: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentLosses: number = 0;
         let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
         loserSubscription.unsubscribe();
         loser.update({losses: currentLosses + 1})
+    }
+
+    updateLeagues(playerKey: string, league: League): void {
+        let leagues: FirebaseObjectObservable<League[]> = this.af.database.object(`/players/${playerKey}/leagues/${league.leagueId}`);
+        leagues.set({leagueName: league.leagueName, leagueId: league.leagueId});
+    }
+
+    getPlayerLeagues(playerKey: string): FirebaseListObservable<League[]> {
+        return this.af.database.list(`/players/${playerKey}/leagues`);
     }
 
     create(player: Player) {

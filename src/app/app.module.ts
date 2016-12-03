@@ -20,6 +20,8 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {SubmitMatchComponent} from './submit-match/submit-match.component';
 import {CreateLeagueComponent} from './create-league/create-league.component';
 import { MatchConfirmationComponent } from './match-confirmation/match-confirmation.component';
+import { LeagueLandingComponent } from './league-landing/league-landing.component';
+import { LeagueNavigationComponent } from './league-navigation/league-navigation.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-shn6r6-LgmCy6v8maYr_Oynjb8eQlEs",
@@ -43,7 +45,9 @@ const myFirebaseAuthConfig = {
         NavigationComponent,
         SubmitMatchComponent,
         CreateLeagueComponent,
-        MatchConfirmationComponent
+        MatchConfirmationComponent,
+        LeagueLandingComponent,
+        LeagueNavigationComponent
     ],
     imports: [
         BrowserModule,

@@ -3,12 +3,15 @@
     ".read": "auth != null",
     "players": {
       "$player": {
-        ".write": "!data.exists() && newData.child('uid').val() === auth.uid",
+        ".write": "!data.exists() && $player === auth.uid",
         "wins": {
           ".write": "newData.val() === data.val() + 1"
         },
         "losses": {
           ".write": "newData.val() === data.val() + 1"
+        },
+        "leagues": {
+          ".write": "$player === auth.uid"
         }
       }
     },
@@ -20,7 +23,7 @@
     "matches": {
       ".indexOn": "statusConfirmationUid",
       "$match": {
-        ".write": "!data.exists() && (newData.child('winnerUid').val() === auth.uid || newData.child('loserUid').val() === auth.uid)",
+        ".write": "!data.exists() || (data.child('winnerUid').val() === auth.uid || data.child('loserUid').val() === auth.uid)",
         "status": {
           ".validate": "newData.val() === 'pending' || newData.val() === 'denied' || newData.val() === 'confirmed'",
           ".write": "data.child('confirmationUid').val() === auth.uid"
