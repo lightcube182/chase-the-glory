@@ -19,10 +19,10 @@ import {Match} from '../match';
 })
 export class SubmitMatchComponent implements OnInit {
     @Input()
-        players: FirebaseListObservable<Player[]>;
+    players: FirebaseListObservable<Player[]>;
 
     @Input()
-        leagueId: string;
+    leagueId: string;
 
     winner: Player;
     loser: Player;
