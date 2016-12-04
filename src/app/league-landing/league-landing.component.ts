@@ -11,7 +11,7 @@ import {FirebaseListObservable} from "angularfire2";
 @Component({
     selector: 'app-league-landing',
     templateUrl: './league-landing.component.html',
-    styleUrls: ['./league-landing.component.css']
+    styleUrls: ['./league-landing.component.scss']
 })
 export class LeagueLandingComponent implements OnInit {
     league: League = new League();

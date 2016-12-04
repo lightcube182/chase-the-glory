@@ -9,7 +9,7 @@ import {Match} from '../Match';
 @Component({
     selector: 'app-match-confirmation',
     templateUrl: './match-confirmation.component.html',
-    styleUrls: ['./match-confirmation.component.css']
+    styleUrls: ['./match-confirmation.component.scss']
 })
 export class MatchConfirmationComponent implements OnInit {
     unconfirmedMatches: FirebaseListObservable<Match[]>;

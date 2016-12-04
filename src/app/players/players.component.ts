@@ -2,9 +2,9 @@ import {Component, OnInit, Input} from '@angular/core';
 
 import {FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
-import {PlayerService} from './player.service';
+import {PlayerService} from '../player.service';
 
-import {Player} from './player';
+import {Player} from '../player';
 
 @Component({
     selector: 'players',

@@ -13,7 +13,7 @@ import {MatchService} from './match.service';
 import {LeagueService} from './league.service';
 
 import {AppComponent} from './app.component';
-import {PlayersComponent} from './players.component';
+import {PlayersComponent} from './players/players.component';
 import {PlayerSignUpComponent} from './player-sign-up/player-sign-up.component';
 import {PlayerDetailsComponent} from './player-details/player-details.component';
 import {NavigationComponent} from './navigation/navigation.component';

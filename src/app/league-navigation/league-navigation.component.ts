@@ -9,7 +9,7 @@ import {League} from '../league';
 @Component({
     selector: 'app-league-navigation',
     templateUrl: './league-navigation.component.html',
-    styleUrls: ['./league-navigation.component.css']
+    styleUrls: ['./league-navigation.component.scss']
 })
 export class LeagueNavigationComponent implements OnInit {
     auth: FirebaseAuthState;

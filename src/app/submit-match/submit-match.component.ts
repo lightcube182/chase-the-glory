@@ -15,7 +15,7 @@ import {Match} from '../match';
 @Component({
     selector: 'app-submit-match',
     templateUrl: './submit-match.component.html',
-    styleUrls: ['./submit-match.component.css']
+    styleUrls: ['./submit-match.component.scss']
 })
 export class SubmitMatchComponent implements OnInit {
     @Input()

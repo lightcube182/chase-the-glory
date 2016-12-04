@@ -13,7 +13,7 @@ import {FirebaseObjectObservable} from "angularfire2";
 @Component({
     selector: 'app-create-league',
     templateUrl: './create-league.component.html',
-    styleUrls: ['./create-league.component.css']
+    styleUrls: ['./create-league.component.scss']
 })
 export class CreateLeagueComponent implements OnInit {
     newLeague = new League();
