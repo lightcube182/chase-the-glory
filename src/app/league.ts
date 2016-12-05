@@ -8,4 +8,5 @@ export class League {
     sport: string;
     type: string;
     leagueId: string;
+    leaguePlayerStatus: string;
 }

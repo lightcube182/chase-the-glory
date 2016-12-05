@@ -8,6 +8,7 @@ export class Player {
     losses: number;
     wins: number;
     leagues: League[];
+    leagueMemberStatus: string;
     $key: string;
     $exists: () => boolean;
 }
