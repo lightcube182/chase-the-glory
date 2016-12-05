@@ -18,12 +18,16 @@
         display: inline-block;
         margin-bottom: 20px;
         list-style: none;
-        padding: 20px;
         text-align: left;
         width: 100%;
         
         &:hover {
             cursor: pointer;
+        }
+        
+        a {
+            display: block;
+            padding: 20px;
         }
     }
 
