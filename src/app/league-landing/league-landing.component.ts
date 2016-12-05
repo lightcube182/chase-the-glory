@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import {LeagueService} from "../league.service";
 
 import {League} from "../league";
 import {Player} from "../player";
-import {FirebaseListObservable} from "angularfire2";
+import {FirebaseListObservable, FirebaseAuthState, AngularFire} from "angularfire2";
 
 @Component({
     selector: 'app-league-landing',
@@ -16,8 +16,12 @@ import {FirebaseListObservable} from "angularfire2";
 export class LeagueLandingComponent implements OnInit {
     league: League = new League();
     leaguePlayers: FirebaseListObservable<Player[]>;
+    auth: FirebaseAuthState;
 
-    constructor(private route: ActivatedRoute, private router: Router, private leagueService: LeagueService) {
+    constructor(private af: AngularFire, private route: ActivatedRoute, private leagueService: LeagueService) {
+        this.af.auth.subscribe(auth => {
+            this.auth = auth;
+        });
     }
 
     ngOnInit() {
