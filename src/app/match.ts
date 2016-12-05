@@ -9,5 +9,6 @@ export class Match {
     submissionUid: string;
     confirmationUid: string;
     statusConfirmationUid: string;
+    statusSubmissionUid: string;
     $key: string;
 }

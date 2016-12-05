@@ -29,8 +29,18 @@ export class MatchService {
         });
     }
 
-    updateMatchStatus(matchId: string, confirmationUid: string, newStatus: string): void {
+    getMatchBySubmission(playerUid: string): FirebaseListObservable<Match[]> {
+        return this.af.database.list(`/matches`, {
+            query: {
+                orderByChild: 'statusSubmissionUid',
+                equalTo: `pending_${playerUid}`
+            }
+        });
+    }
+
+    updateMatchStatus(matchId: string, confirmationUid: string, submissionUid: string, newStatus: string): void {
         this.matches.update(matchId, {status: newStatus});
         this.matches.update(matchId, {statusConfirmationUid: `${newStatus}_${confirmationUid}`});
+        this.matches.update(matchId, {statusSubmissionUid: `${newStatus}_${submissionUid}`});
     }
 }
