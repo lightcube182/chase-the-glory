@@ -4,12 +4,6 @@
     "players": {
       "$player": {
         ".write": "!data.exists() && $player === auth.uid",
-        "wins": {
-          ".write": "newData.val() === data.val() + 1"
-        },
-        "losses": {
-          ".write": "newData.val() === data.val() + 1"
-        },
         "leagues": {
           ".write": "$player === auth.uid",
           "$league": {
@@ -20,7 +14,17 @@
     },
     "leagues": {
       "$league": {
-        ".write": "!data.exists() || data.child('adminUid').val() === auth.uid"
+        ".write": "!data.exists() || data.child('adminUid').val() === auth.uid",
+        "players": {
+          "$player": {
+            "wins": {
+              ".write": "newData.val() === data.val() + 1"
+            },
+            "losses": {
+              ".write": "newData.val() === data.val() + 1"
+            }
+          }
+        }
       }
     },
     "matches": {
