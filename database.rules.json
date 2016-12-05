@@ -24,7 +24,7 @@
       }
     },
     "matches": {
-      ".indexOn": "statusConfirmationUid",
+      ".indexOn": ["statusConfirmationUid", "statusSubmissionUid"],
       "$match": {
         ".write": "!data.exists() || (data.child('winnerUid').val() === auth.uid || data.child('loserUid').val() === auth.uid)",
         "status": {
