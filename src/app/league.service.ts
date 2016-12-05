@@ -24,6 +24,10 @@ export class LeagueService {
         return this.af.database.list(`/leagues/${leagueUid}/players`);
     }
 
+    addPlayer(player: Player, leagueUid: string): void {
+        this.af.database.object(`/leagues/${leagueUid}/players/${player.uid}`).set(player);
+    }
+
     create(league: League) {
         let newPostRef = this.leagues.push(league);
         return newPostRef;

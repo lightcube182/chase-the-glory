@@ -15,14 +15,14 @@ import {Match} from '../match';
 @Component({
     selector: 'app-submit-match',
     templateUrl: './submit-match.component.html',
-    styleUrls: ['./submit-match.component.css']
+    styleUrls: ['./submit-match.component.scss']
 })
 export class SubmitMatchComponent implements OnInit {
     @Input()
-        players: FirebaseListObservable<Player[]>;
+    players: FirebaseListObservable<Player[]>;
 
     @Input()
-        leagueId: string;
+    leagueId: string;
 
     winner: Player;
     loser: Player;

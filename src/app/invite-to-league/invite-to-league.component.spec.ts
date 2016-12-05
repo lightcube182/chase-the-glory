@@ -3,21 +3,21 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-import {LeagueNavigationComponent} from './league-navigation.component';
+import {AddToLeagueComponent} from './invite-to-league.component';
 
-describe('LeagueNavigationComponent', () => {
-    let component: LeagueNavigationComponent;
-    let fixture: ComponentFixture<LeagueNavigationComponent>;
+describe('AddToLeagueComponent', () => {
+    let component: AddToLeagueComponent;
+    let fixture: ComponentFixture<AddToLeagueComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [LeagueNavigationComponent]
+            declarations: [AddToLeagueComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LeagueNavigationComponent);
+        fixture = TestBed.createComponent(AddToLeagueComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

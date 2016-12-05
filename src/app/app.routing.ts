@@ -1,11 +1,12 @@
 import {ModuleWithProviders}  from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {PlayersComponent}      from './players.component';
+import {PlayersComponent}      from './players/players.component';
 import {PlayerSignUpComponent}    from './player-sign-up/player-sign-up.component';
 import {SubmitMatchComponent}    from './submit-match/submit-match.component';
 import {CreateLeagueComponent}    from './create-league/create-league.component';
 import {LeagueLandingComponent} from "./league-landing/league-landing.component";
+import {InviteToLeagueComponent} from "./invite-to-league/invite-to-league.component";
 
 const appRoutes: Routes = [
     {
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
     {
         path: 'league-landing/:leagueId',
         component: LeagueLandingComponent
+    },
+    {
+        path: 'invite-to-league/:leagueId',
+        component: InviteToLeagueComponent
     }
 ];
 

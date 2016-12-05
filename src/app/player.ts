@@ -1,4 +1,4 @@
-import { League } from './league';
+import {League} from './league';
 
 export class Player {
     name: string;
@@ -8,6 +8,7 @@ export class Player {
     losses: number;
     wins: number;
     leagues: League[];
+    leagueMemberStatus: string;
     $key: string;
     $exists: () => boolean;
 }

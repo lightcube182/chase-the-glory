@@ -13,7 +13,7 @@ import {FirebaseObjectObservable} from "angularfire2";
 @Component({
     selector: 'app-create-league',
     templateUrl: './create-league.component.html',
-    styleUrls: ['./create-league.component.css']
+    styleUrls: ['./create-league.component.scss']
 })
 export class CreateLeagueComponent implements OnInit {
     newLeague = new League();
@@ -43,7 +43,7 @@ export class CreateLeagueComponent implements OnInit {
         this.newLeague.players[adminPlayer.uid] = adminPlayer;
         this.newLeague.type = "1v1";
         let newLeagueRef = this.leagueService.create(this.newLeague);
-        this.newLeague.leagueId = newLeagueRef.key;
+        this.newLeague.$key = newLeagueRef.key;
         this.playerService.updateLeagues(AppComponent.currentUserId, this.newLeague);
 
         this.router.navigate(['/']);
