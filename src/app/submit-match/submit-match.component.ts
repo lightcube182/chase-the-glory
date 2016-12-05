@@ -51,6 +51,6 @@ export class SubmitMatchComponent implements OnInit {
 
         this.matchService.create(this.match);
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/league-landing/', this.leagueId]);
     }
 }
