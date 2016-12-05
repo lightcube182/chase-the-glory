@@ -27,7 +27,7 @@ export class PlayerService {
             currentWins: number = 0;
         let winnerSubscription = winner.subscribe(snapshot => currentWins = snapshot.wins);
         winnerSubscription.unsubscribe();
-        winner.update({wins: currentWins + 1})
+        winner.update({wins: currentWins + 1});
     }
 
     updateLosses(playerKey: string, leagueId: string): void {
@@ -35,7 +35,7 @@ export class PlayerService {
             currentLosses: number = 0;
         let loserSubscription = loser.subscribe(snapshot => currentLosses = snapshot.losses);
         loserSubscription.unsubscribe();
-        loser.update({losses: currentLosses + 1})
+        loser.update({losses: currentLosses + 1});
     }
 
     updateLeagues(playerKey: string, league: League): void {
