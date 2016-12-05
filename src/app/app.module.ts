@@ -25,6 +25,7 @@ import {LeagueNavigationComponent} from './league-navigation/league-navigation.c
 import {InviteToLeagueComponent} from './invite-to-league/invite-to-league.component';
 import {LeagueAdminBarComponent} from './league-admin-bar/league-admin-bar.component';
 import {NotInLeaguePipe} from './not-in-league.pipe';
+import { PendingMatchesComponent } from './pending-matches/pending-matches.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-shn6r6-LgmCy6v8maYr_Oynjb8eQlEs",
@@ -53,7 +54,8 @@ const myFirebaseAuthConfig = {
         LeagueNavigationComponent,
         InviteToLeagueComponent,
         LeagueAdminBarComponent,
-        NotInLeaguePipe
+        NotInLeaguePipe,
+        PendingMatchesComponent
     ],
     imports: [
         BrowserModule,
