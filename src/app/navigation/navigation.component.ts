@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+
+import {AngularFire, FirebaseAuthState, FirebaseObjectObservable} from 'angularfire2';
 
 @Component({
     selector: 'app-navigation',
@@ -6,11 +8,22 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+    auth: FirebaseAuthState;
 
-    constructor() {
+    constructor(private af: AngularFire) {
     }
 
     ngOnInit() {
+        this.af.auth.subscribe(auth => {
+            this.auth = auth;
+        });
     }
 
+    login() {
+        this.af.auth.login();
+    }
+
+    logout() {
+        this.af.auth.logout();
+    }
 }
