@@ -1,0 +1,45 @@
+.league-navigation {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    h2 {
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    &__list {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    &__list-item {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+
+        &:last-child {
+            &:after {
+                content: none;
+            }
+        }
+
+        &:after {
+            background: #43b02b;
+            content: '';
+            display: inline-block;
+            height: 14px;
+            margin: 0 5px;
+            vertical-align: middle;
+            width: 1px;
+        }
+    }
+
+    &__link {
+        color: #00338d;
+    }
+}

@@ -1,3 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+// Variables
+// Fonts
+$font-primary: 'Roboto', sans-serif;
+
+// Colors
+$green: #43b02b;
+
 * {
-    display: none;
+    box-sizing: border-box;
+    font-family: $font-primary;
+}
+
+html, body {
+    background: #f0f0f0;
+    margin: auto;
+    max-width: 1200px;
+}
+
+body {
+    padding: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-weight: 400;
 }
