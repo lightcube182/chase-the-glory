@@ -43,7 +43,7 @@ export class CreateLeagueComponent implements OnInit {
         this.newLeague.players[adminPlayer.uid] = adminPlayer;
         this.newLeague.type = "1v1";
         let newLeagueRef = this.leagueService.create(this.newLeague);
-        this.newLeague.leagueId = newLeagueRef.key;
+        this.newLeague.$key = newLeagueRef.key;
         this.playerService.updateLeagues(AppComponent.currentUserId, this.newLeague);
 
         this.router.navigate(['/']);
