@@ -47,6 +47,7 @@ export class SubmitMatchComponent implements OnInit {
         this.match.submissionUid = AppComponent.currentUserId;
         this.match.confirmationUid = AppComponent.currentUserId === this.winner.uid ? this.loser.uid : this.winner.uid;
         this.match.statusConfirmationUid = `${this.match.status}_${this.match.confirmationUid}`;
+        this.match.statusSubmissionUid = `${this.match.status}_${this.match.submissionUid}`;
 
         this.matchService.create(this.match);
 
