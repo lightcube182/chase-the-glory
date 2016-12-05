@@ -40,7 +40,7 @@ export class PlayerService {
 
     updateLeagues(playerKey: string, league: League): void {
         let leagues: FirebaseObjectObservable<League> = this.af.database.object(`/players/${playerKey}/leagues/${league.$key}`);
-        leagues.set({leagueName: league.leagueName, leagueId: league.$key});
+        leagues.set({leagueName: league.leagueName, leagueId: league.$key, leaguePlayerStatus: league.leaguePlayerStatus});
     }
 
     getPlayerLeagues(playerKey: string): FirebaseListObservable<League[]> {
