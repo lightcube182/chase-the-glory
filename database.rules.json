@@ -11,7 +11,10 @@
           ".write": "newData.val() === data.val() + 1"
         },
         "leagues": {
-          ".write": "$player === auth.uid"
+          ".write": "$player === auth.uid",
+          "$league": {
+            ".write": "!data.exists()"
+          }
         }
       }
     },
