@@ -36,7 +36,8 @@ export class CreateLeagueComponent implements OnInit {
         playerSubscription.unsubscribe();
         adminPlayer.wins = 0;
         adminPlayer.losses = 0;
-        this.newLeague.adminUid = AppComponent.currentUserId;
+        adminPlayer.leagueMemberStatus = "active";
+        this.newLeague.adminUid = adminPlayer.uid;
         if (!this.newLeague.players) {
             this.newLeague.players = new Array<Player>();
         }
@@ -44,6 +45,7 @@ export class CreateLeagueComponent implements OnInit {
         this.newLeague.type = "1v1";
         let newLeagueRef = this.leagueService.create(this.newLeague);
         this.newLeague.$key = newLeagueRef.key;
+        this.newLeague.leaguePlayerStatus = "active";
         this.playerService.updateLeagues(AppComponent.currentUserId, this.newLeague);
 
         this.router.navigate(['/']);
