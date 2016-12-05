@@ -1,0 +1,11 @@
+<section class="invite-to-league">
+    <h2>Invite Players to Your League</h2>
+    <ul class="invite-to-league__player-list">
+        <li *ngFor="let player of (players | async | notInLeague: leagueId)">
+            <a (click)="invitePlayer(player)">
+                <span class="invite-to-league__name">{{player.name}}</span>
+                <span class="invite-to-league__email">{{player.email}}</span>
+            </a>
+        </li>
+    </ul>
+</section>
