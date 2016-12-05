@@ -1,10 +1,13 @@
-<nav>
-    <ul>
-        <li>
-            <a routerLink="/" routerLinkActive="active">Home</a>
+<nav class="main-navigation">
+    <ul *ngIf="auth" class="main-navigation__list">
+        <li class="main-navigation__list-item">
+            <a class="main-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
         </li>
-        <li>
-            <a routerLink="/create-league" routerLinkActive="active">Create League</a>
+        <li class="main-navigation__list-item">
+            <a class="main-navigation__link" routerLink="/create-league" routerLinkActive="active">Create League</a>
         </li>
     </ul>
+    <app-league-navigation *ngIf="auth"></app-league-navigation>
+    <button *ngIf="!auth" (click)="login()">Login with Google</button>
+    <button *ngIf="auth" (click)="logout()">Logout</button>
 </nav>

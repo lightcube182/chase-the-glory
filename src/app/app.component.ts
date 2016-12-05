@@ -40,12 +40,4 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-    login() {
-        this.af.auth.login();
-    }
-
-    logout() {
-        this.af.auth.logout();
-    }
 }

@@ -2,9 +2,6 @@
     {{title}}
 </h1>
 <p *ngIf="!auth">You'll need to sign in if you want to catch your share of glory</p>
-<app-navigation *ngIf="auth"></app-navigation>
-<app-league-navigation></app-league-navigation>
-<button *ngIf="!auth" (click)="login()">Login with Google</button>
-<button *ngIf="auth" (click)="logout()">Logout</button>
+<app-navigation></app-navigation>
 <app-match-confirmation></app-match-confirmation>
 <router-outlet></router-outlet>
