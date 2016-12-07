@@ -37,15 +37,37 @@ export class PlayerService {
         let loser: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentLosses: number = 0;
         let loserSubscription = loser.first().subscribe(snapshot => {
-            currentLosses = snapshot.losses
+            currentLosses = snapshot.losses;
             loser.update({losses: currentLosses + 1});
         });
         loserSubscription.unsubscribe();
     }
 
+    updateRankings(winnerPlayerKey: string, loserPlayerKey: string, leagueId: string) {
+        let winner: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${winnerPlayerKey}`),
+            loser: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${loserPlayerKey}`),
+            winnerLeagueRanking = 0,
+            loserLeagueRanking = 0;
+
+        let winnerSubscription = winner.first().subscribe(winnerSnapshot => {
+            let loserSubscription = loser.first().subscribe(loserSnapshot => {
+                winnerLeagueRanking = winnerSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating + 400;
+                loserLeagueRanking = loserSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating - 400;
+                winner.update({leaguePerformanceRating: winnerLeagueRanking});
+                loser.update({leaguePerformanceRating: loserLeagueRanking});
+            });
+            loserSubscription.unsubscribe();
+        });
+        winnerSubscription.unsubscribe();
+    }
+
     updateLeagues(playerKey: string, league: League): void {
         let leagues: FirebaseObjectObservable<League> = this.af.database.object(`/players/${playerKey}/leagues/${league.$key}`);
-        leagues.set({leagueName: league.leagueName, leagueId: league.$key, leaguePlayerStatus: league.leaguePlayerStatus});
+        leagues.set({
+            leagueName: league.leagueName,
+            leagueId: league.$key,
+            leaguePlayerStatus: league.leaguePlayerStatus
+        });
     }
 
     getPlayerLeagues(playerKey: string): FirebaseListObservable<League[]> {
