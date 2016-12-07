@@ -37,6 +37,7 @@ export class CreateLeagueComponent implements OnInit {
         adminPlayer.wins = 0;
         adminPlayer.losses = 0;
         adminPlayer.leagueMemberStatus = "active";
+        adminPlayer.leaguePerformanceRating = 350;
         this.newLeague.adminUid = adminPlayer.uid;
         if (!this.newLeague.players) {
             this.newLeague.players = new Array<Player>();

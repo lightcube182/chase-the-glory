@@ -38,6 +38,7 @@ export class InviteToLeagueComponent implements OnInit {
         newPlayer.losses = 0;
         newLeague.leaguePlayerStatus = "active";
         newPlayer.leagueMemberStatus = "active";
+        newPlayer.leaguePerformanceRating = 350;
         this.playerService.updateLeagues(player.uid, newLeague);
         this.leagueService.addPlayer(newPlayer, this.leagueId);
     }
