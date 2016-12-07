@@ -31,6 +31,7 @@ export class MatchConfirmationComponent implements OnInit {
 
         this.playerService.updateWins(match.winnerUid, match.leagueId);
         this.playerService.updateLosses(match.loserUid, match.leagueId);
+        this.playerService.updateRankings(match.winnerUid, match.loserUid, match.leagueId);
     }
 
     denyMatch(match: Match) {

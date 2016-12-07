@@ -22,6 +22,9 @@
             },
             "losses": {
               ".write": "newData.val() === data.val() + 1"
+            },
+            "leaguePerformanceRating": {
+              ".write": "auth != null"
             }
           }
         }

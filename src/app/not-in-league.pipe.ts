@@ -5,7 +5,6 @@ import {Player} from "./player";
     name: 'notInLeague'
 })
 export class NotInLeaguePipe implements PipeTransform {
-
     transform(allPlayers: Player[], leagueId: string): Player[] {
         if (allPlayers != null) {
             return allPlayers.filter(player => !(player.hasOwnProperty('leagues') && player.leagues.hasOwnProperty(leagueId)));
@@ -13,5 +12,4 @@ export class NotInLeaguePipe implements PipeTransform {
             return null;
         }
     }
-
 }
