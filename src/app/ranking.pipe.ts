@@ -9,9 +9,9 @@ export class RankingPipe implements PipeTransform {
         if (allPlayers != null) {
             return allPlayers.sort((player1, player2) => {
                 if (player1.leaguePerformanceRating > player2.leaguePerformanceRating) {
-                    return 1;
-                } else if (player1.leaguePerformanceRating < player2.leaguePerformanceRating) {
                     return -1;
+                } else if (player1.leaguePerformanceRating < player2.leaguePerformanceRating) {
+                    return 1;
                 }
                 return 0;
             });

@@ -49,16 +49,14 @@ export class PlayerService {
             winnerLeagueRanking = 0,
             loserLeagueRanking = 0;
 
-        let winnerSubscription = winner.first().subscribe(winnerSnapshot => {
-            let loserSubscription = loser.first().subscribe(loserSnapshot => {
+        winner.first().subscribe(winnerSnapshot => {
+            loser.first().subscribe(loserSnapshot => {
                 winnerLeagueRanking = winnerSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating + 400;
                 loserLeagueRanking = loserSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating - 400;
                 winner.update({leaguePerformanceRating: winnerLeagueRanking});
                 loser.update({leaguePerformanceRating: loserLeagueRanking});
             });
-            loserSubscription.unsubscribe();
         });
-        winnerSubscription.unsubscribe();
     }
 
     updateLeagues(playerKey: string, league: League): void {
