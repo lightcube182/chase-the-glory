@@ -13,18 +13,48 @@
         max-width: 800px;
         list-style: none;
         padding: 20px;
+        position: relative;
         text-align: left;
         width: 100%;
     }
 }
 
 .player-details {
+    &__ranking-wrapper {
+        background: #7BAFD4;
+        bottom: 0;
+        display: block;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 20px;
+    }
+
+    &__stats {
+        display: inline-block;
+        width: calc(100% - 120px - 0.25em);
+    }
+
+    &__ranking {
+        bottom: 0;
+        color: #ffffff;
+        display: block;
+        font-size: 12px;
+        height: 20px;
+        line-height: 20px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    
     &__image-wrap {
         display: inline-block;
         height: 100px;
         margin-right: 20px;
         vertical-align: middle;
-        width: 100px;
+        width: calc(100px - 0.25em);
     }
 
     &__image {
@@ -38,12 +68,17 @@
     &__name {
         display: inline-block;
         vertical-align: top;
-        width: calc(50% - 40px - 0.4em);
+        width: calc(60% - 0.25em);
     }
 
     &__wins, &__losses {
         display: inline-block;
         vertical-align: top;
-        width: calc(25% - 40px - 0.4em);
+        width: calc(20% - 0.4em);
+    }
+    
+    &__performance-ranking {
+        display: block;
+        width: 100%;
     }
 }
