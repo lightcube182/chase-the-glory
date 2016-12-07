@@ -52,11 +52,11 @@ export class PlayerService {
         return this.af.database.list(`/players/${playerKey}/leagues`);
     }
 
-    create(player: Player) {
+    createPlayer(player: Player) {
         this.af.database.object(`/players/${player.uid}`).set(player);
     }
 
-    delete(playerKey: string) {
+    deletePlayer(playerKey: string) {
         this.players.remove(playerKey);
     }
 }

@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
                     newPlayer.email = this.auth.auth.email;
                     newPlayer.uid = this.auth.uid;
                     newPlayer.image = this.auth.auth.photoURL;
-                    this.playerService.create(newPlayer);
+                    this.playerService.createPlayer(newPlayer);
                 }
             });
         });
