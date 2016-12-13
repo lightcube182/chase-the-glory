@@ -1,10 +1,20 @@
+@import "../../variables";
+
 .main-navigation {
-    background: #f7f7f7;
+    background: $color8;
     width: 100%;
+
+    &__wrap {
+        margin: auto;
+        max-width: 1200px;
+        padding: 16px;
+        width: 100%;
+    }
 
     &__list {
         display: inline-block;
         list-style: none;
+        margin-right: 15px;
         padding-left: 0;
     }
 
@@ -20,7 +30,7 @@
         }
 
         &:after {
-            background: #43b02b;
+            background: $color1;
             content: '';
             display: inline-block;
             height: 14px;
@@ -31,6 +41,6 @@
     }
 
     &__link {
-        color: #00338d;
+        color: $color7;
     }
 }

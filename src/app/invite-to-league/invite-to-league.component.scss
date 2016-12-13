@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .invite-to-league {
     text-align: center;
     width: 100%;
@@ -12,8 +14,8 @@
     }
 
     &__player {
-        background: #ffffff;
-        border: 1px solid #43b02b;
+        background: $color4;
+        border: 1px solid $color1;
         border-radius: 3px;
         display: inline-block;
         margin-bottom: 20px;
@@ -26,17 +28,17 @@
         }
 
         a {
-            display: block;
+            display: flex;
+            justify-content: space-between;
             padding: 20px;
         }
     }
 
     &__image-wrap {
-        display: inline-block;
+        flex: 0 0 100px;
         height: 100px;
         margin-right: 20px;
         vertical-align: middle;
-        width: 100px;
     }
 
     &__image {
@@ -47,9 +49,16 @@
         width: 100%;
     }
 
+    &__player-info {
+        align-items: center;
+        display: flex;
+        flex: 1 1 calc(100% - 100px);
+        flex-wrap: wrap;
+    }
+
     &__name, &__email {
-        display: inline-block;
+        flex: 1 1 50%;
+        padding: 0 10px;
         vertical-align: top;
-        width: calc(50% - 60px - 0.4em);
     }
 }
