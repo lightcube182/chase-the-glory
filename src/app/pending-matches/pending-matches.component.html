@@ -1,11 +1,11 @@
-<section *ngIf="(pendingMatches | async)?.length">
+<section class="pending-matches" *ngIf="(pendingMatches | async)?.length">
     <h2>Matches Awaiting Opponents Approval</h2>
-    <ul class="pending-match-list">
-        <li *ngFor="let match of pendingMatches | async; let i = index;" class="pending-match-list__match">
-            <div class="pending-match-list__match-details">
-                <span class="pending-match-list__winner-name">Winner: {{ match.winnerName }}</span>
-                <span class="pending-match-list__loser-name">Loser: {{ match.loserName }}</span>
-                <span class="pending-match-list__date">Date: {{ match.date }}</span>
+    <ul class="pending-matches__list">
+        <li *ngFor="let match of pendingMatches | async; let i = index;" class="pending-matches__match">
+            <div class="pending-matches__match-details">
+                <span class="pending-matches__winner-name">Winner: {{ match.winnerName }}</span>
+                <span class="pending-matches__loser-name">Loser: {{ match.loserName }}</span>
+                <span class="pending-matches__date">Date: {{ match.date }}</span>
             </div>
         </li>
     </ul>

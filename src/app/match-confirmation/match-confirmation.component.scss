@@ -1,0 +1,63 @@
+@import "../../variables";
+
+.unconfirmed-matches {
+    margin: auto;
+
+    &__list {
+        display: block;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__match {
+        background: $color4;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+        margin-bottom: 3px;
+        padding: 10px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__match-details {
+        display: flex;
+        flex: 1 1 80%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__winner-name, &__loser-name, &__date{
+        padding: 10px 20px;
+    }
+
+    &__winner-name {
+        color: $color1;
+    }
+
+    &__loser-name {
+        color: $color3;
+    }
+
+    &__button-row {
+        display: flex;
+        flex: 1 1 20%;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    &__confirm {
+        border-color: $color1;
+        color: $color1;
+        flex: 0 1 46%;
+    }
+
+    &__deny {
+        border-color: $color3;
+        color: $color3;
+        flex: 0 1 46%;
+    }
+}

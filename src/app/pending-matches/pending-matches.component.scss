@@ -1,0 +1,41 @@
+@import "../../variables";
+
+.pending-matches {
+    margin: auto;
+
+    &__list {
+        display: block;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__match {
+        background: $color4;
+        display: block;
+        list-style: none;
+        margin-bottom: 3px;
+        padding: 10px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__match-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__winner-name, &__loser-name, &__date {
+        padding: 10px;
+    }
+
+    &__winner-name {
+        color: $color1;
+    }
+
+    &__loser-name {
+        color: $color3;
+    }
+}

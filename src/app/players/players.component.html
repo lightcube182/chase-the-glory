@@ -11,8 +11,10 @@
             </span>
             <div class="player-details__stats">
                 <span class="player-details__name">{{ player.name }}</span>
-                <span *ngIf="player.wins != null" class="player-details__wins">Wins: {{ player.wins }}</span>
-                <span *ngIf="player.losses != null" class="player-details__losses">Losses: {{ player.losses }}</span>
+                <span *ngIf="player.wins != null && player.losses != null" class="player-details__win-loss-wrapper">
+                    <span class="player-details__wins">Wins: {{ player.wins }}</span>
+                    <span class="player-details__losses">Losses: {{ player.losses }}</span>
+                </span>
                 <span *ngIf="player.leaguePerformanceRating" class="player-details__performance-ranking">Performance Rating: {{ player.leaguePerformanceRating }}</span>
             </div>
         </div>

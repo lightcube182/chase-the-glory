@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .player-list {
     list-style: none;
     padding: 0;
@@ -5,8 +7,8 @@
     width: 100%;
 
     &__player {
-        background: #ffffff;
-        border: 1px solid #43b02b;
+        background: $color4;
+        border: 1px solid $color1;
         border-radius: 3px;
         display: inline-block;
         margin-bottom: 20px;
@@ -20,8 +22,10 @@
 }
 
 .player-details {
+    display: flex;
+
     &__ranking-wrapper {
-        background: #7BAFD4;
+        background: $color2;
         bottom: 0;
         display: block;
         left: 0;
@@ -32,13 +36,15 @@
     }
 
     &__stats {
-        display: inline-block;
-        width: calc(100% - 120px - 0.25em);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-basis: calc(100% - 120px - 0.25em);
     }
 
     &__ranking {
         bottom: 0;
-        color: #ffffff;
+        color: $color4;
         display: block;
         font-size: 12px;
         height: 20px;
@@ -50,11 +56,10 @@
     }
     
     &__image-wrap {
-        display: inline-block;
+        flex: 1 0 calc(100px - 0.25em);
         height: 100px;
         margin-right: 20px;
         vertical-align: middle;
-        width: calc(100px - 0.25em);
     }
 
     &__image {
@@ -66,19 +71,33 @@
     }
 
     &__name {
-        display: inline-block;
+        flex: 1 1 60%;
         vertical-align: top;
-        width: calc(60% - 0.25em);
+        white-space: nowrap;
     }
 
     &__wins, &__losses {
-        display: inline-block;
+        flex: 1 1 50%;
+        white-space: nowrap;
+    }
+
+    &__wins {
+        color: $color1;
+    }
+
+    &__losses {
+        color: $color3;
+    }
+
+    &__win-loss-wrapper {
+        display: flex;
+        flex: 1 1 40%;
+        flex-wrap: wrap;
+        justify-content: space-around;
         vertical-align: top;
-        width: calc(20% - 0.4em);
     }
     
     &__performance-ranking {
-        display: block;
-        width: 100%;
+        flex-basis: 100%;
     }
 }

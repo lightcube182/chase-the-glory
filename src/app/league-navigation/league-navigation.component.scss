@@ -1,6 +1,7 @@
+@import "../../variables";
+
 .league-navigation {
     display: inline-block;
-    margin-left: 15px;
     margin-right: 15px;
 
     h2 {
@@ -40,6 +41,6 @@
     }
 
     &__link {
-        color: #00338d;
+        color: $color7;
     }
 }

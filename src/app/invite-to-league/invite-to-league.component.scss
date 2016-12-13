@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .invite-to-league {
     text-align: center;
     width: 100%;
@@ -12,8 +14,8 @@
     }
 
     &__player {
-        background: #ffffff;
-        border: 1px solid #43b02b;
+        background: $color4;
+        border: 1px solid $color1;
         border-radius: 3px;
         display: inline-block;
         margin-bottom: 20px;
