@@ -26,21 +26,19 @@ export class PlayerService {
     updateWins(playerKey: string, leagueId: string): void {
         let winner: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentWins: number = 0;
-        let winnerSubscription = winner.first().subscribe(snapshot => {
+        winner.first().subscribe(snapshot => {
             currentWins = snapshot.wins;
             winner.update({wins: currentWins + 1});
         });
-        winnerSubscription.unsubscribe();
     }
 
     updateLosses(playerKey: string, leagueId: string): void {
         let loser: FirebaseObjectObservable<Player> = this.af.database.object(`/leagues/${leagueId}/players/${playerKey}`),
             currentLosses: number = 0;
-        let loserSubscription = loser.first().subscribe(snapshot => {
+        loser.first().subscribe(snapshot => {
             currentLosses = snapshot.losses;
             loser.update({losses: currentLosses + 1});
         });
-        loserSubscription.unsubscribe();
     }
 
     updateRankings(winnerPlayerKey: string, loserPlayerKey: string, leagueId: string) {
@@ -52,7 +50,7 @@ export class PlayerService {
         winner.first().subscribe(winnerSnapshot => {
             loser.first().subscribe(loserSnapshot => {
                 winnerLeagueRanking = winnerSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating + 400;
-                loserLeagueRanking = loserSnapshot.leaguePerformanceRating + loserSnapshot.leaguePerformanceRating - 400;
+                loserLeagueRanking = loserSnapshot.leaguePerformanceRating + winnerSnapshot.leaguePerformanceRating - 400;
                 winner.update({leaguePerformanceRating: winnerLeagueRanking});
                 loser.update({leaguePerformanceRating: loserLeagueRanking});
             });
