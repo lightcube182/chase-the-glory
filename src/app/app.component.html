@@ -1,8 +1,12 @@
-<h1>
-    {{title}}
-</h1>
+<div class="page-content">
+    <h1>
+        {{title}}
+    </h1>
+    <p *ngIf="!auth">You'll need to sign in if you want to catch your share of glory</p>
+</div>
 <app-navigation></app-navigation>
-<button *ngIf="!auth" (click)="login()">Login with Google</button>
-<button *ngIf="auth" (click)="logout()">Logout</button>
-<app-match-confirmation></app-match-confirmation>
-<router-outlet></router-outlet>
+<div class="page-content">
+    <app-match-confirmation></app-match-confirmation>
+    <app-pending-matches></app-pending-matches>
+    <router-outlet></router-outlet>
+</div>

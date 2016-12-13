@@ -13,13 +13,20 @@ import {MatchService} from './match.service';
 import {LeagueService} from './league.service';
 
 import {AppComponent} from './app.component';
-import {PlayersComponent} from './players.component';
+import {PlayersComponent} from './players/players.component';
 import {PlayerSignUpComponent} from './player-sign-up/player-sign-up.component';
 import {PlayerDetailsComponent} from './player-details/player-details.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SubmitMatchComponent} from './submit-match/submit-match.component';
 import {CreateLeagueComponent} from './create-league/create-league.component';
-import { MatchConfirmationComponent } from './match-confirmation/match-confirmation.component';
+import {MatchConfirmationComponent} from './match-confirmation/match-confirmation.component';
+import {LeagueLandingComponent} from './league-landing/league-landing.component';
+import {LeagueNavigationComponent} from './league-navigation/league-navigation.component';
+import {InviteToLeagueComponent} from './invite-to-league/invite-to-league.component';
+import {LeagueAdminBarComponent} from './league-admin-bar/league-admin-bar.component';
+import {NotInLeaguePipe} from './not-in-league.pipe';
+import {PendingMatchesComponent} from './pending-matches/pending-matches.component';
+import {RankingPipe} from './ranking.pipe';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-shn6r6-LgmCy6v8maYr_Oynjb8eQlEs",
@@ -43,7 +50,14 @@ const myFirebaseAuthConfig = {
         NavigationComponent,
         SubmitMatchComponent,
         CreateLeagueComponent,
-        MatchConfirmationComponent
+        MatchConfirmationComponent,
+        LeagueLandingComponent,
+        LeagueNavigationComponent,
+        InviteToLeagueComponent,
+        LeagueAdminBarComponent,
+        NotInLeaguePipe,
+        PendingMatchesComponent,
+        RankingPipe
     ],
     imports: [
         BrowserModule,

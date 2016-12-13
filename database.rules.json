@@ -1,0 +1,47 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    "players": {
+      "$player": {
+        ".write": "!data.exists() && $player === auth.uid",
+        "leagues": {
+          ".write": "$player === auth.uid",
+          "$league": {
+            ".write": "!data.exists()"
+          }
+        }
+      }
+    },
+    "leagues": {
+      "$league": {
+        ".write": "!data.exists() || data.child('adminUid').val() === auth.uid",
+        "players": {
+          "$player": {
+            "wins": {
+              ".write": "newData.val() === data.val() + 1"
+            },
+            "losses": {
+              ".write": "newData.val() === data.val() + 1"
+            },
+            "leaguePerformanceRating": {
+              ".write": "auth != null"
+            }
+          }
+        }
+      }
+    },
+    "matches": {
+      ".indexOn": ["statusConfirmationUid", "statusSubmissionUid"],
+      "$match": {
+        ".write": "!data.exists() || (data.child('winnerUid').val() === auth.uid || data.child('loserUid').val() === auth.uid)",
+        "status": {
+          ".validate": "newData.val() === 'pending' || newData.val() === 'denied' || newData.val() === 'confirmed'",
+          ".write": "data.child('confirmationUid').val() === auth.uid"
+        },
+        "statusConfirmationUid": {
+          ".write": "data.child('confirmationUid').val() === auth.uid"
+        }
+      }
+    }
+  }
+}

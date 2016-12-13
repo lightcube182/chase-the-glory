@@ -1,0 +1,64 @@
+@import "../../variables";
+
+.invite-to-league {
+    text-align: center;
+    width: 100%;
+
+    &__player-list {
+        display: inline-block;
+        list-style: none;
+        max-width: 800px;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__player {
+        background: $color4;
+        border: 1px solid $color1;
+        border-radius: 3px;
+        display: inline-block;
+        margin-bottom: 20px;
+        list-style: none;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+    }
+
+    &__image-wrap {
+        flex: 0 0 100px;
+        height: 100px;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+
+    &__image {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+
+    &__player-info {
+        align-items: center;
+        display: flex;
+        flex: 1 1 calc(100% - 100px);
+        flex-wrap: wrap;
+    }
+
+    &__name, &__email {
+        flex: 1 1 50%;
+        padding: 0 10px;
+        vertical-align: top;
+    }
+}

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import "variables";
+
+* {
+    box-sizing: border-box;
+    font-family: $font-primary;
+}
+
+html, body {
+    background: $color5;
+    color: $body-text-color;
+    margin: 0;
+}
+
+.page-content {
+    margin: auto;
+    max-width: 1200px;
+    padding: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-weight: 400;
+}
+
+// Form Elements
+input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
+    display: block;
+    max-width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+}
+
+button {
+    background: $color4;
+    border: 1px solid $color2;
+    outline: none;
+    padding: 10px 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.custom-select {
+    background: $color4 no-repeat 90% 50%;
+    border: 1px solid $color2;
+    border-radius: 0;
+    box-shadow: 3px 4px 0px 0px #d6d6d6;
+    height: 42px;
+    margin-bottom: 10px;
+    max-width: 500px;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 35px;
+    position: relative;
+    width: 100%;
+
+    //&:after {
+    //    bottom: 0;
+    //    color: $color-secondary;
+    //    content: "\e903";
+    //    display: inline-block;
+    //    font-family: 'ryan-iconfont';
+    //    font-size: 10px;
+    //    height: 10px;
+    //    margin: auto 0;
+    //    pointer-events: none;
+    //    position: absolute;
+    //    right: 10px;
+    //    top: 0;
+    //    vertical-align: middle;
+    //    z-index: 6;
+    //}
+
+    select {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        color: $body-text-color;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 40px;
+        padding: 0 35px 0 8px;
+        /*-webkit-appearance: none;
+        -moz-appearance: none;*/
+        text-indent: 1px;
+        text-overflow: '';
+        height: 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        width: 100%;
+        z-index: 7;
+
+/*        &:focus {
+            outline: none;
+        }
+        &::-ms-expand {
+            display: none;
+        }
+        &:-moz-focusring {
+            color: transparent !important;
+            text-shadow: 0 0 0 #000 !important;
+        }
+        &:focus::-ms-value {
+            background: transparent;
+            color: #000;
+        }*/
+    }
+}

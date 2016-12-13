@@ -1,0 +1,49 @@
+@import "../../variables";
+
+.league-admin-bar {
+    background: $color2;
+    display: inline-block;
+    padding: 0 15px;
+    width: 100%;
+
+    h2 {
+        color: $color4;
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    &__list {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    &__list-item {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+
+        &:last-child {
+            &:after {
+                content: none;
+            }
+        }
+
+        &:after {
+            background: #43b02b;
+            content: '';
+            display: inline-block;
+            height: 14px;
+            margin: 0 5px;
+            vertical-align: middle;
+            width: 1px;
+        }
+    }
+
+    &__link {
+        color: $color7;
+    }
+}

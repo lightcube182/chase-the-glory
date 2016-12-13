@@ -10,7 +10,7 @@ import {Player} from './player';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
     title = 'Chase the Glory';
@@ -32,22 +32,12 @@ export class AppComponent implements OnInit {
                     newPlayer.email = this.auth.auth.email;
                     newPlayer.uid = this.auth.uid;
                     newPlayer.image = this.auth.auth.photoURL;
-                    newPlayer.losses = 0;
-                    newPlayer.wins = 0;
-                    this.playerService.create(newPlayer);
+                    this.playerService.createPlayer(newPlayer);
                 }
             });
         });
     }
 
     ngOnInit(): void {
-    }
-
-    login() {
-        this.af.auth.login();
-    }
-
-    logout() {
-        this.af.auth.logout();
     }
 }

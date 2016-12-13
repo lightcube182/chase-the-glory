@@ -1,0 +1,22 @@
+<ul class="player-list">
+    <li *ngFor="let player of players | async | ranking; let i = index;" class="player-list__player">
+        <div class="player-details">
+            <span *ngIf="player.leaguePerformanceRating != null" class="player-details__ranking-wrapper">
+                <span class="player-details__ranking">
+                    {{ i + 1 }}
+                </span>
+            </span>
+            <span class="player-details__image-wrap">
+                <img class="player-details__image" [src]="player.image" alt="Player Image">
+            </span>
+            <div class="player-details__stats">
+                <span class="player-details__name">{{ player.name }}</span>
+                <span *ngIf="player.wins != null && player.losses != null" class="player-details__win-loss-wrapper">
+                    <span class="player-details__wins">Wins: {{ player.wins }}</span>
+                    <span class="player-details__losses">Losses: {{ player.losses }}</span>
+                </span>
+                <span *ngIf="player.leaguePerformanceRating" class="player-details__performance-ranking">Performance Rating: {{ player.leaguePerformanceRating }}</span>
+            </div>
+        </div>
+    </li>
+</ul>

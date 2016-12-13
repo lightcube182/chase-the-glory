@@ -1,17 +1,20 @@
-<ul class="unconfirmed-match-list">
-    <li *ngFor="let match of unconfirmedMatches | async; let i = index;" class="unconfirmed-match-list__match">
-        <div class="unconfirmed-match-list__match-details">
-            <span class="unconfirmed-match-list__winner-name">Winner: {{ match.winnerName }}</span>
-            <span class="unconfirmed-match-list__loser-name">Loser: {{ match.loserName }}</span>
-            <span class="unconfirmed-match-list__date">Date: {{ match.date }}</span>
-        </div>
-        <div class="unconfirmed-match-list__button-row">
-            <button class="unconfirmed-match-list__confirm" (click)="confirmMatch(match)">
-                Confirm
-            </button>
-            <button class="unconfirmed-match-list__deny" (click)="denyMatch(match)">
-                Deny
-            </button>
-        </div>
-    </li>
-</ul>
+<section class="unconfirmed-matches" *ngIf="(unconfirmedMatches | async)?.length">
+    <h2>Matches Awaiting your Confirmation</h2>
+    <ul class="unconfirmed-matches__list">
+        <li *ngFor="let match of unconfirmedMatches | async; let i = index;" class="unconfirmed-matches__match">
+            <div class="unconfirmed-matches__match-details">
+                <span class="unconfirmed-matches__winner-name">Winner: {{ match.winnerName }}</span>
+                <span class="unconfirmed-matches__loser-name">Loser: {{ match.loserName }}</span>
+                <span class="unconfirmed-matches__date">Date: {{ match.date }}</span>
+            </div>
+            <div class="unconfirmed-matches__button-row">
+                <button class="unconfirmed-matches__confirm" (click)="confirmMatch(match)">
+                    Confirm
+                </button>
+                <button class="unconfirmed-matches__deny" (click)="denyMatch(match)">
+                    Deny
+                </button>
+            </div>
+        </li>
+    </ul>
+</section>
