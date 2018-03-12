@@ -1,11 +1,28 @@
 /* tslint:disable:no-unused-variable */
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
-import {TestBed, async} from '@angular/core/testing';
 import {SubmitMatchComponent} from './submit-match.component';
 
-describe('Component: SubmitMatch', () => {
-    it('should create an instance', () => {
-        let component = new SubmitMatchComponent();
+describe('SubmitMatchComponent', () => {
+    let component: SubmitMatchComponent;
+    let fixture: ComponentFixture<SubmitMatchComponent>;
+
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [SubmitMatchComponent]
+        })
+            .compileComponents();
+    }));
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(SubmitMatchComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });
